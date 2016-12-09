@@ -90,18 +90,34 @@ function onClickSprite(target) {
 function gameClick() {
   if(Citadel.dragSprite.enable) {
     Citadel.dragSprite.enable = false;
-    canDrop(Citadel.dragSprite.clonedTarget, Citadel.mouse.activePointer.x, Citadel.mouse.activePointer.y);
+    tryDropTower(Citadel.dragSprite.clonedTarget, Citadel.mouse.activePointer.x, Citadel.mouse.activePointer.y);
   } else {
 
   }
 }
 
-function canDrop(target, mouseX, mouseY) {
-  
+function tryDropTower(target, mouseX, mouseY) {
+  var squareStart = getSquareStart(mouseX, mouseY);
+  if(canDropTower(squareStart, target)) {
+    dropTower(squareStart, target);
+  }
+}
+
+function canDropTower(squareStart, target) {
+  return !squareStart.childTower;
+}
+
+function dropTower(squareStart, target) {
+  squareStart.childTower = Citadel.game.add.sprite(squareStart.x, squareStart.y, 'assets', target.frameName);
 }
 
 function getSquareStart(mouseX, mouseY) {
-
+  for(var i = 0; i < Citadel.squareGroup.children.length; i++) {
+    var child = Citadel.squareGroup.children[i];
+    if(child.x < mouseX && mouseX < child.x + 100 && child.y < mouseY && mouseY < child.y + 100) {
+      return child;
+    }
+  }
 }
 
 function dragSpriteUpdate() {
@@ -125,7 +141,7 @@ function graphicUpdate() {
 
 function onDragOver(mouseX, mouseY) {
   Citadel.squareGroup.children.forEach(function(child, i) {
-    if(child.x < mouseX && mouseX < child.x + 100 && child.y < mouseY && mouseY < child.y + 100) {
+    if(child.x < mouseX && mouseX < child.x + 100 && child.y < mouseY && mouseY < child.y + 100 && !child.childTower) {
       child.dragOver = true;
     } else {
       child.dragOver = false;
