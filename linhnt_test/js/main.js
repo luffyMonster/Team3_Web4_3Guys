@@ -88,8 +88,8 @@ function onClickSprite(target) {
 }
 
 function gameClick() {
-  Citadel.dragSprite.enable = false;
   if(Citadel.dragSprite.enable) {
+    Citadel.dragSprite.enable = false;
     canDrop(Citadel.dragSprite.clonedTarget, Citadel.mouse.activePointer.x, Citadel.mouse.activePointer.y);
   } else {
 
@@ -97,9 +97,11 @@ function gameClick() {
 }
 
 function canDrop(target, mouseX, mouseY) {
-  if(tager.dragOver) {
-    
-  }
+  
+}
+
+function getSquareStart(mouseX, mouseY) {
+
 }
 
 function dragSpriteUpdate() {
