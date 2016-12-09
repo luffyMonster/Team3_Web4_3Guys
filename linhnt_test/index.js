@@ -12,10 +12,7 @@ app.use(express.static(__dirname));
 app.use('/polygon', express.static(path.join(__dirname, '../Polygon')));
 
 var pathTree = {};
-pathTree['/'] = {info: "'./CI' - static"};
-pathTree['/']['/test'] = {info: " do not exist!"};
-
-pathTree['/polygon'] = {info: "'../Polygon' - static"};
+pathTree['/'] = {info: "'./linhnt_test' - static"};
 
 function logPath(pathTree, level) {
   if(pathTree) {
