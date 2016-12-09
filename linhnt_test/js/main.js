@@ -88,6 +88,7 @@ function onClickSprite(target) {
 }
 
 function gameClick() {
+  Citadel.dragSprite.enable = false;
   if(Citadel.dragSprite.enable) {
     canDrop(Citadel.dragSprite.clonedTarget, Citadel.mouse.activePointer.x, Citadel.mouse.activePointer.y);
   } else {
@@ -96,8 +97,9 @@ function gameClick() {
 }
 
 function canDrop(target, mouseX, mouseY) {
-  console.log(target.x + " | " + target.y + " to>> " + mouseX + " | " + mouseY);
-  Citadel.dragSprite.enable = false;
+  if(tager.dragOver) {
+    
+  }
 }
 
 function dragSpriteUpdate() {
@@ -129,15 +131,8 @@ function onDragOver(mouseX, mouseY) {
   })
 }
 
-function onOverlapOut(ship, square) {
-  // console.log("Out");
-  // square.alpha = 0.5;
-}
-
 var update = function() {
 
-
-  // Citadel.game.physics.arcade.overlap(Citadel.ship, Citadel.squareGroup, onOverlapOut, onOnverlap);
 }
 
 var render = function() {
