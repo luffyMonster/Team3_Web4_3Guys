@@ -143,23 +143,27 @@ function tryDropTower(target, mouseX, mouseY) {
   }
 }
 
-function canDropTower(squareStart, target) {
-  var i = 0;
-  var goRight = squareStart;
-  while(i < target.size) {
-    var j = 0;
-    var goDown = goRight;
-    while(j < target.size) {
-      if(!goDown || !goDown.isFree) {
-        return false;
+function canDropTower(squareStart, target, canBeNotStart) {
+  if(canBeNotStart) {
+    return squareStart.isFree;
+  } else {
+    var i = 0;
+    var goRight = squareStart;
+    while(i < target.size) {
+      var j = 0;
+      var goDown = goRight;
+      while(j < target.size) {
+        if(!goDown || !goDown.isFree) {
+          return false;
+        }
+        goDown = goDown.nextDown();
+        j++;
       }
-      goDown = goDown.nextDown();
-      j++;
+      goRight = goRight.nextRight();
+      i++;
     }
-    goRight = goRight.nextRight();
-    i++;
+    return true;
   }
-  return true;
 }
 
 function dropTower(squareStart, target) {
@@ -169,8 +173,6 @@ function dropTower(squareStart, target) {
 
   squareStart.childTower.animations.add('walk', Phaser.Animation.generateFrameNames('22073/', target.frame, target.frame + 1, '.png', 1), 10, true, false);
   squareStart.childTower.animations.play('walk', 10, true);
-
-  //TODO set for all square in target size
 
   var i = 0;
   var goRight = squareStart;
@@ -212,7 +214,7 @@ function dragSpriteUpdate() {
 
 function graphicUpdate() {
   if(this.dragOver && Citadel.dragSprite.enable) {
-    this.alpha = canDropTower(this, Citadel.dragSprite.clonedTarget) ? 1 : 0.5;
+    this.alpha = canDropTower(this, Citadel.dragSprite.clonedTarget, true) ? 1 : 0.5;
   } else {
     this.alpha = 0;
   }
@@ -220,7 +222,8 @@ function graphicUpdate() {
 
 function onDragOver(mouseX, mouseY) {
   Citadel.squareGroup.children.forEach(function(child, i) {
-    if(child.x < mouseX && mouseX < child.x + Citadel.configs.SQUARE.size && child.y < mouseY && mouseY < child.y + Citadel.configs.SQUARE.size) {
+    if(child.x - Citadel.configs.SQUARE.size * (Citadel.dragSprite.clonedTarget.size - 1) < mouseX && mouseX < child.x + Citadel.configs.SQUARE.size
+      && child.y - Citadel.configs.SQUARE.size * (Citadel.dragSprite.clonedTarget.size - 1) < mouseY && mouseY < child.y + Citadel.configs.SQUARE.size) {
       child.dragOver = true;
     } else {
       child.dragOver = false;
