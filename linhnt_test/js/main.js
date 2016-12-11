@@ -7,6 +7,7 @@ Citadel.configs = {
     size: 30
   },
   MAP1: {
+    background: 'map/map1.png',
     occupied: [
       {min: {x: 0, y: 0}, max: {x: 8, y: 2}},
       {min: {x: 9, y: 2}, max: {x: 12, y: 2}},
@@ -65,12 +66,16 @@ var create = function() {
   Citadel.keyboard = Citadel.game.input.keyboard;
 
   Citadel.background = Citadel.game.add.sprite(0, 0,'assets', 'map/map1.png');
+  //(
   Citadel.background.scale.setTo(Citadel.configs.GAME_WIDTH / Citadel.background.width, (Citadel.configs.GAME_HEIGHT - 4 * Citadel.configs.SQUARE.size) / Citadel.background.height);
-
+  //)
   Citadel.squareGroup = Citadel.game.add.physicsGroup();
   Citadel.mouse = Citadel.game.input;
 
+  // Citadel.dragSprite = new Phaser.Sprite(Citadel.game, 0, 0, 'assets', 'tower/type1/idle/001.png');
   Citadel.dragSprite = Citadel.game.add.sprite(0, 0, 'assets', 'tower/type1/idle/001.png');
+  console.log(Citadel.dragSprite);
+
   Citadel.game.physics.enable(Citadel.dragSprite, Phaser.Physics.ARCADE);
   Citadel.dragSprite.body.collideWorldBounds = true;
   Citadel.dragSprite.enable = false;
