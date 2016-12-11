@@ -72,12 +72,12 @@ var create = function() {
   Citadel.squareGroup = Citadel.game.add.physicsGroup();
   Citadel.mouse = Citadel.game.input;
 
-  // Citadel.dragSprite = new Phaser.Sprite(Citadel.game, 0, 0, 'assets', 'tower/type1/idle/001.png');
+  //Citadel.dragSprite = new DragSprite(Citadel.game, 0, 0, 'assets', 'tower/type1/idle/001.png');
   Citadel.dragSprite = Citadel.game.add.sprite(0, 0, 'assets', 'tower/type1/idle/001.png');
   console.log(Citadel.dragSprite);
 
   Citadel.game.physics.enable(Citadel.dragSprite, Phaser.Physics.ARCADE);
-  Citadel.dragSprite.body.collideWorldBounds = true;
+  //Citadel.dragSprite.body.collideWorldBounds = true;
   Citadel.dragSprite.enable = false;
   Citadel.dragSprite.update = dragSpriteUpdate;
   Citadel.dragSprite.anchor.setTo(0.5, 0.5);
@@ -98,6 +98,7 @@ var create = function() {
           sprite.scale.setTo(Citadel.configs.SQUARE.size * sprite.size / sprite.width,
                   Citadel.configs.SQUARE.size * sprite.size / sprite.height);
           sprite.anchor.setTo(1 / (Math.pow(2, sprite.size)));
+        // /  sprite.fire = fire();
         }
       } else if (j < parseInt(Citadel.J) - 4){
 
@@ -194,11 +195,17 @@ function canDropTower(squareStart, target, canBeNotStart) {
     return true;
   }
 }
-
+function fire(){
+  
+}
 function dropTower(squareStart, target) {
   squareStart.childTower = Citadel.game.add.sprite(squareStart.x + Citadel.configs.SQUARE.size / 2, squareStart.y + Citadel.configs.SQUARE.size / 2, 'assets', 'tower/type1/idle/001.png');
   squareStart.childTower.scale = target.scale;
   squareStart.childTower.anchor = target.anchor;
+
+  //fire...
+  squareStart.childTower.inputEnabled = true;
+  squareStart.childTower.events.onInputDown.add(fire, this);
 
   squareStart.childTower.animations.add('idle', Phaser.Animation.generateFrameNames('tower/type1/idle/', 0, 1, '.png', 3), 10, true, false);
   squareStart.childTower.animations.play('idle', 10, true);
