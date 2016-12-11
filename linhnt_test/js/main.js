@@ -58,6 +58,7 @@ var preload = function() {
     Citadel.game.scale.pageAlignHorizontally = true;
     Citadel.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
     Citadel.game.load.atlasJSONHash('assets', 'Assets/mob.png', 'Assets/mob.json');
+    Citadel.game.load.image('bullet', 'Assets/33.png');
     Citadel.game.time.advancedTiming = true;
 }
 
@@ -69,6 +70,7 @@ var create = function() {
   //(
   Citadel.background.scale.setTo(Citadel.configs.GAME_WIDTH / Citadel.background.width, (Citadel.configs.GAME_HEIGHT - 4 * Citadel.configs.SQUARE.size) / Citadel.background.height);
   //)
+  Citadel.bulletGroup = Citadel.game.add.physicsGroup();
   Citadel.squareGroup = Citadel.game.add.physicsGroup();
   Citadel.mouse = Citadel.game.input;
 
@@ -195,8 +197,11 @@ function canDropTower(squareStart, target, canBeNotStart) {
     return true;
   }
 }
-function fire(){
-  //console.log('fired');
+function fire(source){
+
+  var direct = new Phaser.Point(Citadel.game.rnd.integerInRange(-10, 10), Citadel.game.rnd.integerInRange(-10, 10));
+  var bullet = new Bullet(source.position, direct, 'bullet');
+
 }
 function dropTower(squareStart, target) {
   squareStart.childTower = Citadel.game.add.sprite(squareStart.x + Citadel.configs.SQUARE.size / 2, squareStart.y + Citadel.configs.SQUARE.size / 2, 'assets', 'tower/type1/idle/001.png');
@@ -205,7 +210,7 @@ function dropTower(squareStart, target) {
 
   //fire...
   squareStart.childTower.inputEnabled = true;
-  squareStart.childTower.events.onInputDown.add(fire, this);
+  squareStart.childTower.events.onInputDown.add(fire, this, squareStart.childTower);
 
   squareStart.childTower.animations.add('idle', Phaser.Animation.generateFrameNames('tower/type1/idle/', 0, 1, '.png', 3), 10, true, false);
   squareStart.childTower.animations.play('idle', 10, true);
