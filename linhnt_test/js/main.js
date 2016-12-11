@@ -196,7 +196,7 @@ function canDropTower(squareStart, target, canBeNotStart) {
   }
 }
 function fire(){
-  
+  //console.log('fired');
 }
 function dropTower(squareStart, target) {
   squareStart.childTower = Citadel.game.add.sprite(squareStart.x + Citadel.configs.SQUARE.size / 2, squareStart.y + Citadel.configs.SQUARE.size / 2, 'assets', 'tower/type1/idle/001.png');
