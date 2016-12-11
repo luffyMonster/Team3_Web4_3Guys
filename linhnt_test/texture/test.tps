@@ -36,7 +36,7 @@
         <key>dataFormat</key>
         <string>phaser-json-array</string>
         <key>textureFileName</key>
-        <filename>../../mob.png</filename>
+        <filename>../../mob/mob.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrCompressionQuality</key>
@@ -150,7 +150,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>../../mob.json</filename>
+                <filename>../../mob/mob.json</filename>
             </struct>
         </map>
         <key>multiPack</key>
@@ -197,66 +197,8 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">../../img/22073/0.png</key>
-            <key type="filename">../../img/22073/14.png</key>
-            <key type="filename">../../img/22073/2.png</key>
-            <key type="filename">../../img/22073/4.png</key>
-            <key type="filename">../../img/22073/6.png</key>
-            <key type="filename">../../img/22073/8.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>19,19,38,39</rect>
-                <key>scale9Paddings</key>
-                <rect>19,19,38,39</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">../../img/22073/1.png</key>
-            <key type="filename">../../img/22073/5.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>19,19,38,38</rect>
-                <key>scale9Paddings</key>
-                <rect>19,19,38,38</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">../../img/22073/10.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>20,19,41,39</rect>
-                <key>scale9Paddings</key>
-                <rect>20,19,41,39</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">../../img/22073/11.png</key>
-            <key type="filename">../../img/22073/12.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>19,19,38,37</rect>
-                <key>scale9Paddings</key>
-                <rect>19,19,38,37</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">../../img/22073/13.png</key>
+            <key type="filename">../../img/mob/enemy/type1/idle/001.png</key>
+            <key type="filename">../../img/mob/enemy/type1/idle/007.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -269,46 +211,8 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">../../img/22073/15.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>23,23,46,46</rect>
-                <key>scale9Paddings</key>
-                <rect>23,23,46,46</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">../../img/22073/16.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>23,22,46,45</rect>
-                <key>scale9Paddings</key>
-                <rect>23,22,46,45</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">../../img/22073/17.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>26,24,53,48</rect>
-                <key>scale9Paddings</key>
-                <rect>26,24,53,48</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">../../img/22073/18.png</key>
+            <key type="filename">../../img/mob/enemy/type1/idle/002.png</key>
+            <key type="filename">../../img/mob/enemy/type1/idle/006.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -321,9 +225,9 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">../../img/22073/19.png</key>
-            <key type="filename">../../img/22073/20.png</key>
-            <key type="filename">../../img/22073/21.png</key>
+            <key type="filename">../../img/mob/enemy/type1/idle/003.png</key>
+            <key type="filename">../../img/mob/enemy/type1/idle/004.png</key>
+            <key type="filename">../../img/mob/enemy/type1/idle/005.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -336,7 +240,39 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">../../img/22073/3.png</key>
+            <key type="filename">../../img/mob/enemy/type1/walk/000.png</key>
+            <key type="filename">../../img/mob/enemy/type1/walk/002.png</key>
+            <key type="filename">../../img/mob/enemy/type1/walk/004.png</key>
+            <key type="filename">../../img/mob/enemy/type1/walk/006.png</key>
+            <key type="filename">../../img/mob/enemy/type1/walk/008.png</key>
+            <key type="filename">../../img/mob/enemy/type1/walk/014.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>19,19,38,39</rect>
+                <key>scale9Paddings</key>
+                <rect>19,19,38,39</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../../img/mob/enemy/type1/walk/001.png</key>
+            <key type="filename">../../img/mob/enemy/type1/walk/005.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>19,19,38,38</rect>
+                <key>scale9Paddings</key>
+                <rect>19,19,38,38</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../../img/mob/enemy/type1/walk/003.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -349,7 +285,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">../../img/22073/7.png</key>
+            <key type="filename">../../img/mob/enemy/type1/walk/007.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -362,7 +298,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">../../img/22073/9.png</key>
+            <key type="filename">../../img/mob/enemy/type1/walk/009.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -375,23 +311,79 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">../../img/22073/src.png</key>
+            <key type="filename">../../img/mob/enemy/type1/walk/010.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>220,94,440,188</rect>
+                <rect>20,19,41,39</rect>
                 <key>scale9Paddings</key>
-                <rect>220,94,440,188</rect>
+                <rect>20,19,41,39</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../../img/mob/enemy/type1/walk/011.png</key>
+            <key type="filename">../../img/mob/enemy/type1/walk/012.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>19,19,38,37</rect>
+                <key>scale9Paddings</key>
+                <rect>19,19,38,37</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../../img/mob/map/map1.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>175,130,350,260</rect>
+                <key>scale9Paddings</key>
+                <rect>175,130,350,260</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../../img/mob/map/map2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>241,161,482,322</rect>
+                <key>scale9Paddings</key>
+                <rect>241,161,482,322</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../../img/mob/tower/type1/fire/001.png</key>
+            <key type="filename">../../img/mob/tower/type1/fire/002.png</key>
+            <key type="filename">../../img/mob/tower/type1/idle/001.png</key>
+            <key type="filename">../../img/mob/tower/type1/idle/002.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>16,17,32,33</rect>
+                <key>scale9Paddings</key>
+                <rect>16,17,32,33</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
         </map>
         <key>fileList</key>
         <array>
-            <filename>../../img</filename>
+            <filename>../../img/mob</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
