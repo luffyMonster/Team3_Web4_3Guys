@@ -368,6 +368,9 @@
             <key type="filename">../../img/mob/tower/type1/fire/002.png</key>
             <key type="filename">../../img/mob/tower/type1/idle/001.png</key>
             <key type="filename">../../img/mob/tower/type1/idle/002.png</key>
+            <key type="filename">../../img/mob/tower/type2/fire/002.png</key>
+            <key type="filename">../../img/mob/tower/type2/idle/001.png</key>
+            <key type="filename">../../img/mob/tower/type2/idle/002.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -377,6 +380,86 @@
                 <rect>16,17,32,33</rect>
                 <key>scale9Paddings</key>
                 <rect>16,17,32,33</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../../img/mob/tower/type2/fire/0.png</key>
+            <key type="filename">../../img/mob/tower/type2/fire/1.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>15,16,30,31</rect>
+                <key>scale9Paddings</key>
+                <rect>15,16,30,31</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../../img/mob/tower/type2/fire/2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>15,16,31,32</rect>
+                <key>scale9Paddings</key>
+                <rect>15,16,31,32</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../../img/mob/tower/type2/fire/3.png</key>
+            <key type="filename">../../img/mob/tower/type2/fire/4.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>15,15,30,30</rect>
+                <key>scale9Paddings</key>
+                <rect>15,15,30,30</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../../img/mob/tower/type2/fire/5.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>13,15,26,31</rect>
+                <key>scale9Paddings</key>
+                <rect>13,15,26,31</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../../img/mob/tower/type2/fire/6.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>15,15,31,31</rect>
+                <key>scale9Paddings</key>
+                <rect>15,15,31,31</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">../../img/mob/tower/type2/fire/7.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>15,15,30,31</rect>
+                <key>scale9Paddings</key>
+                <rect>15,15,30,31</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
