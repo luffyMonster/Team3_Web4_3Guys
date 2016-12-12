@@ -3,8 +3,6 @@ var Citadel = {};
 Citadel.configs = {
   GAME_WIDTH: 1200,
   GAME_HEIGHT: 600,
-  PLAY_SCREEN_WIDTH: 1080,
-  PLAY_SCREEN_HEIGHT: 600,
   SQUARE: {
     size: 30
   },
@@ -60,6 +58,7 @@ var preload = function() {
     Citadel.game.scale.pageAlignHorizontally = true;
     Citadel.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
     Citadel.game.load.atlasJSONHash('assets', 'Assets/mob.png', 'Assets/mob.json');
+    Citadel.game.load.image('bullet', 'Assets/33.png');
     Citadel.game.time.advancedTiming = true;
 }
 
@@ -69,32 +68,47 @@ var create = function() {
 
   Citadel.background = Citadel.game.add.sprite(0, 0,'assets', 'map/map1.png');
   //(
-  Citadel.background.scale.setTo(Citadel.configs.PLAY_SCREEN_WIDTH / Citadel.background.width, Citadel.configs.PLAY_SCREEN_HEIGHT / Citadel.background.height);
+  Citadel.background.scale.setTo(Citadel.configs.GAME_WIDTH / Citadel.background.width, (Citadel.configs.GAME_HEIGHT - 4 * Citadel.configs.SQUARE.size) / Citadel.background.height);
   //)
+  Citadel.bulletGroup = Citadel.game.add.physicsGroup();
   Citadel.squareGroup = Citadel.game.add.physicsGroup();
   Citadel.mouse = Citadel.game.input;
 
+  //Citadel.dragSprite = new DragSprite(Citadel.game, 0, 0, 'assets', 'tower/type1/idle/001.png');
   Citadel.dragSprite = Citadel.game.add.sprite(0, 0, 'assets', 'tower/type1/idle/001.png');
   console.log(Citadel.dragSprite);
 
   Citadel.game.physics.enable(Citadel.dragSprite, Phaser.Physics.ARCADE);
-  Citadel.dragSprite.body.collideWorldBounds = true;
+  //Citadel.dragSprite.body.collideWorldBounds = true;
   Citadel.dragSprite.enable = false;
   Citadel.dragSprite.update = dragSpriteUpdate;
   Citadel.dragSprite.anchor.setTo(0.5, 0.5);
 
-  Citadel.I = Citadel.configs.PLAY_SCREEN_WIDTH / Citadel.configs.SQUARE.size;
-  Citadel.J = Citadel.configs.PLAY_SCREEN_HEIGHT / Citadel.configs.SQUARE.size;
+  Citadel.I = Citadel.configs.GAME_WIDTH / Citadel.configs.SQUARE.size;
+  Citadel.J = Citadel.configs.GAME_HEIGHT / Citadel.configs.SQUARE.size;
 
   // var style = { font: "12px Arial", fill: "#ff0044", wordWrap: true, wordWrapWidth: Citadel.configs.SQUARE.size, align: "center"};
 
   for(var j = 0; j < Citadel.J; j++) {
     for(var i = 0; i < Citadel.I; i++) {
+      if(j == parseInt(Citadel.J) - 3) {
+        if(i % 4 == 0) {
+          var sprite = Citadel.game.add.sprite(i * Citadel.configs.SQUARE.size, j * Citadel.configs.SQUARE.size, 'assets', 'tower/type1/idle/' + (i % 3 == 0 ? '001.png' : '002.png'));
+          sprite.inputEnabled = true;
+          sprite.events.onInputDown.add(onClickSprite, this);
+          sprite.size = i % 3 + 1;
+          sprite.scale.setTo(Citadel.configs.SQUARE.size * sprite.size / sprite.width,
+                  Citadel.configs.SQUARE.size * sprite.size / sprite.height);
+          sprite.anchor.setTo(1 / (Math.pow(2, sprite.size)));
+        // /  sprite.fire = fire();
+        }
+      } else if (j < parseInt(Citadel.J) - 4){
 
+        // text = Citadel.game.add.text(i * Citadel.configs.SQUARE.size, j * Citadel.configs.SQUARE.size, i + "|" + j, style);
         var graphic = Citadel.game.add.graphics(i * Citadel.configs.SQUARE.size, j * Citadel.configs.SQUARE.size);
         Citadel.squareGroup.add(graphic);
 
-        // text = Citadel.game.add.text(i * Citadel.configs.SQUARE.size, j * Citadel.configs.SQUARE.size, i + "|" + j, style);
+        // graphic.beginFill((i + j) % 2 == 0 ? "0x64E328" : "0xFDFEFE");
         graphic.beginFill("0x64E328");
         graphic.lineStyle(3, 0xffd900, 1);
         graphic.moveTo(1, 1);
@@ -111,23 +125,12 @@ var create = function() {
         graphic.nextRight = squareNextRight;
         graphic.nextDown = squareNextDown;
         graphic.isFree = checkMapFree(i, j);
+      }
     }
   }
 
-
-  for(var i = 1; i < 4; i++) {
-    var sprite = Citadel.game.add.sprite(Citadel.configs.PLAY_SCREEN_WIDTH + 30, i * 60, 'assets', 'tower/type1/idle/' + '001.png');
-    sprite.inputEnabled = true;
-    sprite.events.onInputDown.add(onClickSprite, this);
-    sprite.size = i;
-    sprite.scale.setTo(Citadel.configs.SQUARE.size * sprite.size / sprite.width,
-            Citadel.configs.SQUARE.size * sprite.size / sprite.height);
-    sprite.anchor.setTo(1 / (Math.pow(2, sprite.size)));
-
-    Citadel.mouse.onDown.add(gameClick, this);
-  }
+  Citadel.mouse.onDown.add(gameClick, this);
 }
-
 
 function checkMapFree(x, y) {
   var occupieds = Citadel.configs.MAP1.occupied;
@@ -166,15 +169,13 @@ function squareNextDown() {
 }
 
 function tryDropTower(target, mouseX, mouseY) {
-  console.log("TRy drop");
+  var squareStart;
   if((squareStart = getSquareStart(mouseX, mouseY)) && canDropTower(squareStart, target)) {
     dropTower(squareStart, target);
   }
 }
 
 function canDropTower(squareStart, target, canBeNotStart) {
-  console.log("squareStart");
-  console.log(squareStart);
   if(canBeNotStart) {
     return squareStart.isFree;
   } else {
@@ -196,11 +197,20 @@ function canDropTower(squareStart, target, canBeNotStart) {
     return true;
   }
 }
+function fire(source){
 
+  var direct = new Phaser.Point(Citadel.game.rnd.integerInRange(-10, 10), Citadel.game.rnd.integerInRange(-10, 10));
+  var bullet = new Bullet(source.position, direct, 'bullet');
+
+}
 function dropTower(squareStart, target) {
   squareStart.childTower = Citadel.game.add.sprite(squareStart.x + Citadel.configs.SQUARE.size / 2, squareStart.y + Citadel.configs.SQUARE.size / 2, 'assets', 'tower/type1/idle/001.png');
   squareStart.childTower.scale = target.scale;
   squareStart.childTower.anchor = target.anchor;
+
+  //fire...
+  squareStart.childTower.inputEnabled = true;
+  squareStart.childTower.events.onInputDown.add(fire, this, squareStart.childTower);
 
   squareStart.childTower.animations.add('idle', Phaser.Animation.generateFrameNames('tower/type1/idle/', 0, 1, '.png', 3), 10, true, false);
   squareStart.childTower.animations.play('idle', 10, true);
