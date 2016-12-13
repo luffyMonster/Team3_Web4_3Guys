@@ -34,6 +34,21 @@ Citadel.configs = {
         {min: {x: 28, y: 16}, max: {x: 35, y: 17}},
         {min: {x: 27, y: 0}, max: {x: 28, y: 1}},
         {min: {x: 32, y: 1}, max: {x: 35, y: 6}}
+      ],
+      wave: [
+        {
+          enemy: [
+            {
+              type: 0,
+              number: 1
+            },
+            {
+              type: 0,
+              number: 1
+            }
+          ],
+          timeEnemyReborn: 10
+        }
       ]
     },
     {
@@ -54,17 +69,31 @@ Citadel.configs = {
   },
   towerChoser: [
     {
-      size: 1,
+      size: 1
     },
     {
-      size: 2,
+      size: 2
     },
     {
-      size: 3,
+      size: 3
     }
   ],
   enemy: [
-
+    {
+      name: "type1",
+      frame: "enemy/type1/idle/001.png",
+      speed: 100,
+      animations: {
+        idle: {
+            frameCount: 7,
+            fps: 10
+        },
+        walk: {
+            frameCount: 14,
+            fps: 10
+        }
+      }
+    }
   ],
   tower: [
 
@@ -168,7 +197,6 @@ function canDropTower(squareStart, target, canBeNotStart) {
 function fire(source){
   var direct = new Phaser.Point(Citadel.game.rnd.integerInRange(-10, 10), Citadel.game.rnd.integerInRange(-10, 10));
   var bullet = new Bullet(source.position, direct, 'bullet');
-
 }
 
 function dropTower(squareStart, target) {
