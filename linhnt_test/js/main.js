@@ -5,39 +5,76 @@ Citadel.configs = {
   GAME_HEIGHT: 600,
   PLAY_SCREEN_WIDTH: 1080,
   PLAY_SCREEN_HEIGHT: 600,
-  SQUARE: {
-    size: 30
+  map: [
+    {
+      background: 'map/map1.png',
+      occupied: [
+        {min: {x: 0, y: 0}, max: {x: 7, y: 3}},
+        {min: {x: 0, y: 4}, max: {x: 2, y: 8}},
+        {min: {x: 8, y: 2}, max: {x: 11, y: 3}},
+        {min: {x: 8, y: 4}, max: {x: 10, y: 6}},
+        {min: {x: 10, y: 5}, max: {x: 15, y: 6}},
+        {min: {x: 14, y: 2}, max: {x: 15, y: 6}},
+        {min: {x: 16, y: 2}, max: {x: 21, y: 3}},
+        {min: {x: 20, y: 4}, max: {x: 21, y: 10}},
+        {min: {x: 22, y: 7}, max: {x: 25, y: 9}},
+        {min: {x: 24, y: 6}, max: {x: 26, y: 6}},
+        {min: {x: 14, y: 9}, max: {x: 19, y: 10}},
+        {min: {x: 0, y: 12}, max: {x: 1, y: 15}},
+        {min: {x: 29, y: 7}, max: {x: 30, y: 7}},
+        {min: {x: 29, y: 8}, max: {x: 29, y: 8}},
+        {min: {x: 23, y: 11}, max: {x: 24, y: 11}},
+        {min: {x: 28, y: 11}, max: {x: 30, y: 11}},
+        {min: {x: 14, y: 11}, max: {x: 15, y: 17}},
+        {min: {x: 14, y: 18}, max: {x: 18, y: 19}},
+        {min: {x: 17, y: 16}, max: {x: 21, y: 17}},
+        {min: {x: 20, y: 13}, max: {x: 21, y: 15}},
+        {min: {x: 22, y: 13}, max: {x: 27, y: 14}},
+        {min: {x: 26, y: 15}, max: {x: 27, y: 17}},
+        {min: {x: 28, y: 16}, max: {x: 35, y: 17}},
+        {min: {x: 27, y: 0}, max: {x: 28, y: 1}},
+        {min: {x: 32, y: 1}, max: {x: 35, y: 6}}
+      ]
+    },
+    {
+      background: 'map/map2.png',
+      occupied: [
+      ]
+    }
+  ],
+  menu: {
+    margin: 10
   },
-  MAP1: {
-    background: 'map/map1.png',
-    occupied: [
-      {min: {x: 0, y: 0}, max: {x: 7, y: 3}},
-      {min: {x: 0, y: 4}, max: {x: 2, y: 8}},
-      {min: {x: 8, y: 2}, max: {x: 11, y: 3}},
-      {min: {x: 8, y: 4}, max: {x: 10, y: 6}},
-      {min: {x: 10, y: 5}, max: {x: 15, y: 6}},
-      {min: {x: 14, y: 2}, max: {x: 15, y: 6}},
-      {min: {x: 16, y: 2}, max: {x: 21, y: 3}},
-      {min: {x: 20, y: 4}, max: {x: 21, y: 10}},
-      {min: {x: 22, y: 7}, max: {x: 25, y: 9}},
-      {min: {x: 24, y: 6}, max: {x: 26, y: 6}},
-      {min: {x: 14, y: 9}, max: {x: 19, y: 10}},
-      {min: {x: 0, y: 12}, max: {x: 1, y: 15}},
-      {min: {x: 29, y: 7}, max: {x: 30, y: 7}},
-      {min: {x: 29, y: 8}, max: {x: 29, y: 8}},
-      {min: {x: 23, y: 11}, max: {x: 24, y: 11}},
-      {min: {x: 28, y: 11}, max: {x: 30, y: 11}},
-      {min: {x: 14, y: 11}, max: {x: 15, y: 17}},
-      {min: {x: 14, y: 18}, max: {x: 18, y: 19}},
-      {min: {x: 17, y: 16}, max: {x: 21, y: 17}},
-      {min: {x: 20, y: 13}, max: {x: 21, y: 15}},
-      {min: {x: 22, y: 13}, max: {x: 27, y: 14}},
-      {min: {x: 26, y: 15}, max: {x: 27, y: 17}},
-      {min: {x: 28, y: 16}, max: {x: 35, y: 17}},
-      {min: {x: 27, y: 0}, max: {x: 28, y: 1}},
-      {min: {x: 32, y: 1}, max: {x: 35, y: 6}}
-    ]
-  }
+  SQUARE: {
+    size: 30,
+    fillColor: "0x64E328",
+    lineColor: "0xffd900",
+    lineWidth: 6,
+    lineAlpha: 1
+  },
+  towerChoser: [
+    {
+      size: 1,
+    },
+    {
+      size: 2,
+    },
+    {
+      size: 3,
+    }
+  ],
+  enemy: [
+
+  ],
+  tower: [
+
+  ],
+  weapon: [
+
+  ],
+  bullet: [
+
+  ]
 };
 
 window.onload = function() {
@@ -70,9 +107,16 @@ var preload = function() {
 }
 
 var create = function() {
-  new MapBuilder(Citadel.configs);
+  Citadel.map = new MapBuilder(1, Citadel.configs);
 }
 
+var update = function() {
+
+}
+
+var render = function() {
+
+}
 
 function onClickTowerChoser(target) {
   Citadel.dragSprite.clonedTarget = target;
@@ -89,14 +133,6 @@ function gameClick() {
   } else {
 
   }
-}
-
-function squareNextRight() {
-  return this.i < Citadel.I - 1 ? Citadel.squareGroup.children[this.j * Citadel.I + this.i + 1] : null;
-}
-
-function squareNextDown() {
-  return this.j < Citadel.J - 1 ? Citadel.squareGroup.children[(this.j + 1) * Citadel.I + this.i] : null;
 }
 
 function tryDropTower(target, mouseX, mouseY) {
@@ -130,7 +166,6 @@ function canDropTower(squareStart, target, canBeNotStart) {
 }
 
 function fire(source){
-
   var direct = new Phaser.Point(Citadel.game.rnd.integerInRange(-10, 10), Citadel.game.rnd.integerInRange(-10, 10));
   var bullet = new Bullet(source.position, direct, 'bullet');
 
@@ -177,14 +212,6 @@ function getSquareStart(mouseX, mouseY) {
   }
 }
 
-function graphicUpdate() {
-  if(this.dragOver && Citadel.dragSprite.enable) {
-    this.alpha = canDropTower(this, Citadel.dragSprite.clonedTarget, true) ? 1 : 0.5;
-  } else {
-    this.alpha = 0.1;
-  }
-}
-
 function onDragOver(mouseX, mouseY) {
   Citadel.squareGroup.children.forEach(function(child, i) {
     if(child.x - Citadel.configs.SQUARE.size * (Citadel.dragSprite.clonedTarget.size - 1) < mouseX && mouseX < child.x + Citadel.configs.SQUARE.size
@@ -194,12 +221,4 @@ function onDragOver(mouseX, mouseY) {
       child.dragOver = false;
     }
   })
-}
-
-var update = function() {
-
-}
-
-var render = function() {
-
 }
