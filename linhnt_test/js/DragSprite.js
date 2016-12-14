@@ -5,7 +5,6 @@ class DragSprite extends Phaser.Sprite{
 
     Citadel.game.physics.enable(this, Phaser.Physics.ARCADE);
     this.enable = false;
-    this.update = this.update;
     this.anchor.setTo(0.5, 0.5);
   }
 

@@ -29,9 +29,6 @@ class MapBuilder {
       Citadel.pause = false;
       Citadel.nextWaveWaiting = false;
       Citadel.lose = false;
-
-      this.level = 0;
-      this.nextLevel();
     }
 
     reset(configs) {
@@ -44,10 +41,14 @@ class MapBuilder {
       this.nextWave();
     }
 
+    mapConfigs() {
+      return this.configs[this.level - 1];
+    }
+
     changeMap(level) {
       this.level = (level > this.configs.length) ? level % this.configs.length : level;
-      var configs = this.configs[this.level - 1];
-      this.reset(configs);
+      this.mapConfigs = this.configs[this.level - 1];
+      this.reset(this.mapConfigs);
     }
 
     nextWave() {
@@ -64,9 +65,9 @@ class MapBuilder {
         for(var i = 0; i < Citadel.I; i++) {
           Citadel.squareGroup.add(new Square(Citadel.game, i, j, Citadel.configs.SQUARE));
           // var text = Citadel.game.add.text(i * Citadel.configs.SQUARE.size, j * Citadel.configs.SQUARE.size, i + "|" + j, style);
-          if(!checkMapFree(i, j)) {
-              var text = Citadel.game.add.text(i * Citadel.configs.SQUARE.size, j * Citadel.configs.SQUARE.size, i + "|" + j, style);
-          }
+          // if(!checkMapFree(i, j)) {
+          //     var text = Citadel.game.add.text(i * Citadel.configs.SQUARE.size, j * Citadel.configs.SQUARE.size, /*(i * Citadel.configs.SQUARE.size) + "|" +*/ /* (j * Citadel.configs.SQUARE.size)*/ i + "|" + j, style);
+          // }
         }
       }
     }

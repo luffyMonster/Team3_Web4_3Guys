@@ -23,7 +23,6 @@ class Square extends Phaser.Graphics {
     this.endFill();
 
     this.alpha = this.alphaDefault;
-    this.update = this.update;
     this.isFree = checkMapFree(this.i, this.j);
   }
 

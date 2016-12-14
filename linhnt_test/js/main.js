@@ -35,6 +35,22 @@ Citadel.configs = {
         {min: {x: 27, y: 0}, max: {x: 28, y: 1}},
         {min: {x: 32, y: 1}, max: {x: 35, y: 6}}
       ],
+      enemyRoute: [
+        {x: 0, y: 75},
+        {x: 255, y: 75},
+        {x: 255, y: 165},
+        {x: 435, y: 165},
+        {x: 435, y: 75},
+        {x: 615, y: 75},
+        {x: 615, y: 285},
+        {x: 435, y: 285},
+        {x: 435, y: 495},
+        {x: 615, y: 495},
+        {x: 615, y: 405},
+        {x: 795, y: 405},
+        {x: 795, y: 495},
+        {x: 1060, y: 495}
+      ],
       wave: [
         {
           enemy: [
@@ -83,6 +99,10 @@ Citadel.configs = {
       name: "type1",
       frame: "enemy/type1/idle/001.png",
       speed: 100,
+      size: {
+        width: 30,
+        height: 30
+      },
       animations: {
         idle: {
             frameCount: 7,
@@ -137,6 +157,9 @@ var preload = function() {
 
 var create = function() {
   Citadel.map = new MapBuilder(1, Citadel.configs);
+
+  Citadel.map.level = 0;
+  Citadel.map.nextLevel();
 }
 
 var update = function() {
