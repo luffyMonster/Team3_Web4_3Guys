@@ -56,7 +56,11 @@ class MapBuilder {
     }
 
     addEnemy() {
-      Citadel.enemyGroup.add(new EnemyCake(Citadel.game, 100, 100, 'assets', Citadel.configs.enemy[0]));
+      Citadel.enemyGroup.add(new Citadel.configs.enemy[0].class(Citadel.game, 100, 100, 'assets', Citadel.configs.enemy[0]));
+      setTimeout(function() { Citadel.enemyGroup.add(new Citadel.configs.enemy[1].class(Citadel.game, 100, 100, 'assets', Citadel.configs.enemy[1]));}, 1000);
+      setTimeout(function() { Citadel.enemyGroup.add(new Citadel.configs.enemy[2].class(Citadel.game, 100, 100, 'assets', Citadel.configs.enemy[2]));}, 2000);
+      setTimeout(function() { Citadel.enemyGroup.add(new Citadel.configs.enemy[3].class(Citadel.game, 100, 100, 'assets', Citadel.configs.enemy[3]));}, 3000);
+      setTimeout(function() { Citadel.enemyGroup.add(new Citadel.configs.enemy[4].class(Citadel.game, 100, 100, 'assets', Citadel.configs.enemy[4]));}, 4000);
     }
 
     addGraphicMatrix() {

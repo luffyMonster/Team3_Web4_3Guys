@@ -1,4 +1,4 @@
-class EnemyTiger1 extends Enemy {
+class EnemyDragon2 extends Enemy {
   constructor(game, x, y, key, configs){
     super(game, x, y, key, configs.frame, configs);
     this.nextDestination();
@@ -20,7 +20,8 @@ class EnemyTiger1 extends Enemy {
 
   setAnimations() {
     if((Math.abs(this.body.velocity.x) + 0.1) / (Math.abs(this.body.velocity.y) + 0.1) > 1) {
-      this.animations.play(this.body.velocity.x <= 0 ? "left" : "right");
+      this.animations.play("right");
+      this.scale.setTo(this.body.velocity.x >= 0 ? Math.abs(this.scale.x) : -Math.abs(this.scale.x), this.scale.y);
     } else {
       this.animations.play(this.body.velocity.y < 0 ? "back" : "front")
     }
