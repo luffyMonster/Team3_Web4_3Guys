@@ -39,6 +39,10 @@ class Enemy extends Phaser.Sprite {
     Citadel.enemyController.kill(this);
   }
 
+  reborn() {
+    this.alive = this._exists = this.exists = true;
+  }
+
   addAnimation(configs) {
     for(var key in configs) {
       this.animations.add(key, Phaser.Animation.generateFrameNames('enemy/' + this.name + "/" + key + "/", 0, configs[key].frameCount, '.png', 3),

@@ -24,12 +24,8 @@ class EnemyController {
     enemy.speed = configs.speed;
     enemy.from = enemy.to = undefined;
     enemy.nextDestination();
-    this.reborn(enemy);
+    enemy.reborn();
     return enemy;
-  }
-
-  reborn(enemy) {
-    enemy.alive = enemy._exists = enemy.exists = true;
   }
 
   kill(enemy) {
