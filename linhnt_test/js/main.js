@@ -55,11 +55,11 @@ Citadel.configs = {
         {
           enemy: [
             {
-              type: 0,
+              type: "type1",
               number: 1
             },
             {
-              type: 0,
+              type: "type2",
               number: 1
             }
           ],
@@ -171,18 +171,135 @@ Citadel.configs = {
     {
       name: "type1",
       frame: "enemy/type1/idle/001.png",
+      "class": EnemyCake,
       speed: 100,
       size: {
-        width: 30,
-        height: 30
+        width: 50,
+        height: 50
       },
       animations: {
         idle: {
             frameCount: 7,
             fps: 10
         },
-        walk: {
+        left: {
             frameCount: 14,
+            fps: 10
+        }
+      }
+    },
+    {
+      name: "type2",
+      frame: "enemy/type2/idle/001.png",
+      "class": EnemyTiger1,
+      speed: 100,
+      size: {
+        width: 50,
+        height: 50
+      },
+      animations: {
+        idle: {
+            frameCount: 7,
+            fps: 10
+        },
+        front: {
+            frameCount: 4,
+            fps: 10
+        },
+        back: {
+            frameCount: 4,
+            fps: 10
+        },
+        left: {
+            frameCount: 4,
+            fps: 10
+        },
+        right: {
+            frameCount: 4,
+            fps: 10
+        }
+      }
+    },
+    {
+      name: "type3",
+      frame: "enemy/type3/idle/001.png",
+      "class": EnemyDragon1,
+      speed: 100,
+      size: {
+        width: 50,
+        height: 50
+      },
+      animations: {
+        idle: {
+            frameCount: 3,
+            fps: 10
+        },
+        front: {
+            frameCount: 6,
+            fps: 10
+        },
+        back: {
+            frameCount: 6,
+            fps: 10
+        },
+        right: {
+            frameCount: 5,
+            fps: 10
+        }
+      }
+    },
+    {
+      name: "type4",
+      frame: "enemy/type4/idle/001.png",
+      "class": EnemyDragon2,
+      speed: 100,
+      size: {
+        width: 50,
+        height: 50
+      },
+      animations: {
+        idle: {
+            frameCount: 4,
+            fps: 10
+        },
+        front: {
+            frameCount: 6,
+            fps: 10
+        },
+        back: {
+            frameCount: 7,
+            fps: 10
+        },
+        right: {
+            frameCount: 5,
+            fps: 10
+        }
+      }
+    },
+    {
+      name: "type5",
+      frame: "enemy/type5/idle/001.png",
+      "class": EnemyWarrior,
+      speed: 100,
+      size: {
+        width: 50,
+        height: 50
+      },
+      animations: {
+        idle: {
+            frameCount: 4,
+            fps: 10
+        },
+        front: {
+            frameCount: 3,
+            fps: 10
+        },
+        back: {
+            frameCount: 3,
+            fps: 10
+        },
+        left: {
+            frameCount: 3,
             fps: 10
         }
       }
