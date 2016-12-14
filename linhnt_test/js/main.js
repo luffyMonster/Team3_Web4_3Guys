@@ -12,7 +12,8 @@ Citadel.configs = {
         {min: {x: 0, y: 0}, max: {x: 7, y: 3}},
         {min: {x: 0, y: 4}, max: {x: 2, y: 8}},
         {min: {x: 8, y: 2}, max: {x: 11, y: 3}},
-        {min: {x: 8, y: 4}, max: {x: 10, y: 6}},
+        {min: {x: 8, y: 4}, max: {x: 9, y: 6}},
+        {min: {x: 10, y: 5}, max: {x: 10, y: 6}},
         {min: {x: 10, y: 5}, max: {x: 15, y: 6}},
         {min: {x: 14, y: 2}, max: {x: 15, y: 6}},
         {min: {x: 16, y: 2}, max: {x: 21, y: 3}},
@@ -33,7 +34,8 @@ Citadel.configs = {
         {min: {x: 26, y: 15}, max: {x: 27, y: 17}},
         {min: {x: 28, y: 16}, max: {x: 35, y: 17}},
         {min: {x: 27, y: 0}, max: {x: 28, y: 1}},
-        {min: {x: 32, y: 1}, max: {x: 35, y: 6}}
+        {min: {x: 32, y: 1}, max: {x: 35, y: 6}},
+        {min: {x: 15, y: 16}, max: {x: 17, y: 17}}
       ],
       enemyRoute: [
         {x: 0, y: 75},
