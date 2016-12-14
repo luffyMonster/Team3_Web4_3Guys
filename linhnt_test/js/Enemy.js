@@ -36,7 +36,7 @@ class Enemy extends Phaser.Sprite {
   }
 
   finish() {
-    this.kill();
+    Citadel.enemyController.kill(this);
   }
 
   addAnimation(configs) {

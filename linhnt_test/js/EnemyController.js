@@ -1,29 +1,42 @@
 class EnemyController {
   constructor() {
-    this.alives = {
-      cake: [],
-      tiger1: [],
-      tiger2: []
-    };
     this.deads = {
-      cake: [],
-      tiger1: [],
-      tiger2: []
+      type1: [],
+      type2: [],
+      type3: [],
+      type4: [],
+      type5: []
     };
   }
 
-  get(name) {
-    if(this.deads[name]){
-
+  get(index) {
+    var configs = Citadel.configs.enemy[index];
+    if(this.deads[configs.name].length > 0) {
+      return this.resetEnemy(this.deads[configs.name].shift(), -100, -100, configs);
+    } else {
+      Citadel.enemyGroup.add(new Citadel.configs.enemy[index].class(Citadel.game, -100, -100, 'assets', configs));
+      return Citadel.enemyGroup.children.slice(-1)[0];
     }
+  }
+
+  resetEnemy(enemy, x, y, configs) {
+    // console.log(enemy);
+    enemy.speed = configs.speed;
+    enemy.from = enemy.to = undefined;
+    enemy.nextDestination();
+    this.reborn(enemy);
+    return enemy;
+  }
+
+  reborn(enemy) {
+    enemy.alive = enemy._exists = enemy.exists = true;
   }
 
   kill(enemy) {
     enemy.kill();
-    if(this.deads.push(this.alives.splice(this.alives.indexOf(enemy), 1)[0])) {
-
-    }
-
+    // console.log(this.deads[enemy.name].length + " | " + Citadel.enemyGroup.children.length);
+    this.deads[enemy.name].push(enemy);
+    // Citadel.enemyController.get(0);
   }
 
 }
