@@ -360,20 +360,12 @@ var render = function() {
 
 }
 
-function onClickTowerChoser(target) {
-  Citadel.dragSprite.clonedTarget = target;
-  Citadel.dragSprite.frame = target.frame;
-  Citadel.dragSprite.scale = target.scale;
-  Citadel.dragSprite.anchor = target.anchor;
-  Citadel.dragSprite.enable = true;
-}
 
 function gameClick() {
   if(Citadel.dragSprite.enable) {
     Citadel.dragSprite.enable = false;
     tryDropTower(Citadel.dragSprite.clonedTarget, Citadel.mouse.activePointer.x, Citadel.mouse.activePointer.y);
   } else {
-
   }
 }
 
@@ -407,21 +399,13 @@ function canDropTower(squareStart, target, canBeNotStart) {
   }
 }
 
-function fire(source){
-  var direct = new Phaser.Point(Citadel.game.rnd.integerInRange(-10, 10), Citadel.game.rnd.integerInRange(-10, 10));
-  var bullet = new Bullet(source.position, direct, 'bullet');
-}
-
 function dropTower(squareStart, target) {
-  squareStart.childTower = Citadel.game.add.sprite(squareStart.x + Citadel.configs.SQUARE.size * target.size / 2, squareStart.y + Citadel.configs.SQUARE.size * target.size / 2, 'assets', target.frame);
+  squareStart.childTower = new TowerType1(Citadel.game, squareStart.x + Citadel.configs.SQUARE.size * target.size / 2, squareStart.y + Citadel.configs.SQUARE.size * target.size / 2, 'assets', target.frame);
   squareStart.childTower.scale = target.scale;
   squareStart.childTower.anchor.setTo(0.5);
-  squareStart.childTower.update = function() {
-    this.rotation += 0.01;
-  }
-  //fire...
-  squareStart.childTower.inputEnabled = true;
-  squareStart.childTower.events.onInputDown.add(fire, this, squareStart.childTower);
+  // squareStart.childTower.update = function() {
+  //   this.rotation += 0.01;
+  // }
 
   squareStart.childTower.animations.add('idle', Phaser.Animation.generateFrameNames('tower/type1/idle/', 0, 1, '.png', 3), 10, true, false);
   squareStart.childTower.animations.play('idle', 10, true);
