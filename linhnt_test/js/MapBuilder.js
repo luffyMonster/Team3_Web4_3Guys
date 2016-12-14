@@ -69,9 +69,11 @@ class MapBuilder {
         for(var i = 0; i < Citadel.I; i++) {
           Citadel.squareGroup.add(new Square(Citadel.game, i, j, Citadel.configs.SQUARE));
           // var text = Citadel.game.add.text(i * Citadel.configs.SQUARE.size, j * Citadel.configs.SQUARE.size, i + "|" + j, style);
-          // if(!checkMapFree(i, j)) {
-          //     var text = Citadel.game.add.text(i * Citadel.configs.SQUARE.size, j * Citadel.configs.SQUARE.size, /*(i * Citadel.configs.SQUARE.size) + "|" +*/ /* (j * Citadel.configs.SQUARE.size)*/ i + "|" + j, style);
-          // }
+          if(!checkMapFree(i, j)) {
+              // var text = Citadel.game.add.text(i * Citadel.configs.SQUARE.size, j * Citadel.configs.SQUARE.size, i + "|" + j, style);
+              // var text = Citadel.game.add.text(i * Citadel.configs.SQUARE.size, j * Citadel.configs.SQUARE.size, (i * Citadel.configs.SQUARE.size) , style);
+              // var text = Citadel.game.add.text(i * Citadel.configs.SQUARE.size, j * Citadel.configs.SQUARE.size, (j * Citadel.configs.SQUARE.size), style);
+          }
         }
       }
     }
