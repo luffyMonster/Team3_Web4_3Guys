@@ -9,6 +9,7 @@ class MapBuilder {
       Citadel.game.physics.startSystem(Phaser.Physics.ARCADE);
       Citadel.keyboard = Citadel.game.input.keyboard;
       Citadel.mouse = Citadel.game.input;
+      Citadel.enemyController = new EnemyController();
 
       Citadel.I = Citadel.configs.PLAY_SCREEN_WIDTH / Citadel.configs.SQUARE.size;
       Citadel.J = Citadel.configs.PLAY_SCREEN_HEIGHT / Citadel.configs.SQUARE.size;
@@ -56,11 +57,9 @@ class MapBuilder {
     }
 
     addEnemy() {
-      Citadel.enemyGroup.add(new Citadel.configs.enemy[0].class(Citadel.game, 100, 100, 'assets', Citadel.configs.enemy[0]));
-      setTimeout(function() { Citadel.enemyGroup.add(new Citadel.configs.enemy[1].class(Citadel.game, 100, 100, 'assets', Citadel.configs.enemy[1]));}, 1000);
-      setTimeout(function() { Citadel.enemyGroup.add(new Citadel.configs.enemy[2].class(Citadel.game, 100, 100, 'assets', Citadel.configs.enemy[2]));}, 2000);
-      setTimeout(function() { Citadel.enemyGroup.add(new Citadel.configs.enemy[3].class(Citadel.game, 100, 100, 'assets', Citadel.configs.enemy[3]));}, 3000);
-      setTimeout(function() { Citadel.enemyGroup.add(new Citadel.configs.enemy[4].class(Citadel.game, 100, 100, 'assets', Citadel.configs.enemy[4]));}, 4000);
+      for(var i = 0; i < 30; i++) {
+        setTimeout(function() { Citadel.enemyController.get(0)}, i * 1000);
+      }
     }
 
     addGraphicMatrix() {
@@ -69,9 +68,11 @@ class MapBuilder {
         for(var i = 0; i < Citadel.I; i++) {
           Citadel.squareGroup.add(new Square(Citadel.game, i, j, Citadel.configs.SQUARE));
           // var text = Citadel.game.add.text(i * Citadel.configs.SQUARE.size, j * Citadel.configs.SQUARE.size, i + "|" + j, style);
-          // if(!checkMapFree(i, j)) {
-          //     var text = Citadel.game.add.text(i * Citadel.configs.SQUARE.size, j * Citadel.configs.SQUARE.size, /*(i * Citadel.configs.SQUARE.size) + "|" +*/ /* (j * Citadel.configs.SQUARE.size)*/ i + "|" + j, style);
-          // }
+          if(!checkMapFree(i, j)) {
+              // var text = Citadel.game.add.text(i * Citadel.configs.SQUARE.size, j * Citadel.configs.SQUARE.size, i + "|" + j, style);
+              // var text = Citadel.game.add.text(i * Citadel.configs.SQUARE.size, j * Citadel.configs.SQUARE.size, (i * Citadel.configs.SQUARE.size) , style);
+              // var text = Citadel.game.add.text(i * Citadel.configs.SQUARE.size, j * Citadel.configs.SQUARE.size, (j * Citadel.configs.SQUARE.size), style);
+          }
         }
       }
     }

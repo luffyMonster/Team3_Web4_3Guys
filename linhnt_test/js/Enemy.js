@@ -36,7 +36,11 @@ class Enemy extends Phaser.Sprite {
   }
 
   finish() {
-    this.kill();
+    Citadel.enemyController.kill(this);
+  }
+
+  reborn() {
+    this.alive = this._exists = this.exists = true;
   }
 
   addAnimation(configs) {
