@@ -10,6 +10,7 @@ class MapBuilder {
       Citadel.keyboard = Citadel.game.input.keyboard;
       Citadel.mouse = Citadel.game.input;
       Citadel.enemyController = new EnemyController();
+      Citadel.bulletController = new BulletController();
 
       Citadel.I = Citadel.configs.PLAY_SCREEN_WIDTH / Citadel.configs.SQUARE.size;
       Citadel.J = Citadel.configs.PLAY_SCREEN_HEIGHT / Citadel.configs.SQUARE.size;

@@ -312,6 +312,11 @@ Citadel.configs = {
 
   ],
   bullet: [
+    {
+      name: "type1",
+      "class": BulletType1,
+      speed: 500
+    }
 
   ]
 };

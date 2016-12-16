@@ -24,18 +24,21 @@ class TowerType1 extends Tower{
     var minDisF =( function(enemy){
       var distance = Phaser.Point.subtract(enemy.position,  this.position).getMagnitude();
       if ( distance < this.radius){
-        target = enemy.position;
+        target = enemy;
       }
     }).bind(this);
     Citadel.enemyGroup.forEachAlive(minDisF);
     return target;
   }
 
-  fire(target){
+  fire(){
     if (this.timeSinceLastFire < this.cooldown ) return;
     var direct = new Phaser.Point(this.target.x - this.position.x, this.target.y - this.position.y);
-    var bullet = new Bullet(Citadel.game, this.position.x, this.position.y, direct, 'bullet');
+    var bullet = Citadel.bulletController.get(0);
+    bullet.target = this.target;
+    bullet.reset(direct, this.position.x, this.position.y);
     this.angle = bullet.angle + 90;
     this.timeSinceLastFire = 0;
+    console.log(Citadel.bulletGroup.children.length);
   }
 }
