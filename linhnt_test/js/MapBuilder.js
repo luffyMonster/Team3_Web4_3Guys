@@ -5,7 +5,7 @@ class MapBuilder {
       this.init(configs);
     }
 
-    init() {
+    init(configs) {
       Citadel.game.physics.startSystem(Phaser.Physics.ARCADE);
       Citadel.keyboard = Citadel.game.input.keyboard;
       Citadel.mouse = Citadel.game.input;
@@ -26,39 +26,65 @@ class MapBuilder {
 
       this.addGraphicMatrix();
       this.addTowerChoser();
+      this.TIME_TO_NEXT_WAVE = Citadel.configs.TIME_TO_NEXT_WAVE;
       Citadel.play = true;
       Citadel.pause = false;
-      Citadel.nextWaveWaiting = false;
       Citadel.lose = false;
-    }
 
-    reset(configs) {
-      //TODO : clearmap
-      Citadel.background.frameName = configs.background;
-    }
+      document.addEventListener("nextWave", this.nextWaveHandler.bind(this));
+      document.addEventListener("nextLevel", this.nextLevelHandler.bind(this));
 
-    nextLevel() {
-      this.changeMap(++this.level);
-      this.nextWave();
+      this.event = {
+        nextWave : new CustomEvent("nextWave", {detail: "Event call when next level is coming!"}),
+        nextLevel : new CustomEvent("nextLevel", {detail: "Event call when next wave is coming!"})
+      };
     }
 
     mapConfigs() {
-      return this.configs[this.level - 1];
+      return this.level < this.configs.length ? this.configs[this.level] : null;
+    }
+
+    waveConfigs() {
+      if(this.mapConfigs())
+        return this.wave < this.mapConfigs().wave.length ? this.mapConfigs().wave[this.wave] : null;
+    }
+
+    reset() {
+      //TODO : clearmap
+      Citadel.background.frameName = this.mapConfigs().background;
+    }
+
+    nextLevelHandler() {
+      console.log("next level");
+      this.level++;
+      this.reset();
+      this.endWave = false;
+      this.timeSinceLastEnemy = 0;
+      this.wave = -1;
+      document.dispatchEvent(this.event.nextWave);
+
+      // Citadel.enemyController.get("type6");
+
+      // console.log(this);
+      // this.changeMap(++this.level);
+      // this.wave = 0;
+      // document.dispatchEvent(this.event["nextWave"]);
     }
 
     changeMap(level) {
-      this.level = (level > this.configs.length) ? level % this.configs.length : level;
-      this.mapConfigs = this.configs[this.level - 1];
-      this.reset(this.mapConfigs);
+      // this.level = (level > this.configs.length) ? level % this.configs.length : level - 1;
+      // this.reset(this.mapConfigs());
     }
 
-    nextWave() {
-      this.addEnemy();
-    }
-
-    addEnemy() {
-      for(var i = 0; i < 30; i++) {
-        setTimeout(function() { Citadel.enemyController.get(0)}, i * 1000);
+    nextWaveHandler(evt, info) {
+      this.wave++;
+      this.timeSinceLastEnemy = 0;
+      this.timeSinceLastWave = 0;
+      if(this.waveConfigs()) {
+        this.timeToNextEnemy = this.waveConfigs().timeEnemyReborn;
+      } else {
+        // document.dispatchEvent(this.event.nextLevel);
+        this.endWave = true;
       }
     }
 
@@ -84,7 +110,45 @@ class MapBuilder {
            top + Citadel.configs.menu.margin, 'assets', 'tower/type1/idle/001.png', Citadel.configs.towerChoser[i]));
           top += Citadel.configs.menu.margin + Citadel.menuGruop.children[Citadel.menuGruop.children.length - 1].height;
       }
-
       Citadel.mouse.onDown.add(gameClick, Citadel.game);
+    }
+
+    update() {
+      var timeSinceLastUpdate = Citadel.game.time.physicsElapsed * 1000;
+      var configs = this.waveConfigs();
+      if(Citadel.play && !Citadel.pause) {
+          if(this.endWave) {
+            var count = 0;
+            Citadel.enemyGroup.forEachAlive(function() {
+                count++;
+            });
+            if(count == 0) {
+              document.dispatchEvent(this.event.nextLevel);
+            }
+          } else if(this.wave > -1 && configs) {
+              if(this.timeSinceLastWave > this.TIME_TO_NEXT_WAVE) {
+                  if(this.timeSinceLastEnemy > this.timeToNextEnemy) {
+                      var i = 0;
+                      for( ; i < configs.enemy.length; i++) {
+                        if(configs.enemy[i].number > 0) {
+                          Citadel.enemyController.get(configs.enemy[i].name);
+                          configs.enemy[i].number--;
+                          this.timeSinceLastEnemy = 0;
+                          break;
+                        }
+                      }
+                      if(i >= configs.enemy.length) {
+                        document.dispatchEvent(this.event.nextWave);
+                      }
+                  } else {
+                    this.timeSinceLastEnemy += timeSinceLastUpdate;
+                  }
+              } else {
+                this.timeSinceLastWave += timeSinceLastUpdate;
+              }
+          }
+      } else {
+
+      }
     }
 }

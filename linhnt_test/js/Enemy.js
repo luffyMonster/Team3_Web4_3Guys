@@ -9,9 +9,8 @@ class Enemy extends Phaser.Sprite {
   init(configs) {
     this.addAnimation(configs.animations);
     this.anchor.setTo(0.5);
-    this.route = Citadel.map.mapConfigs.enemyRoute;
+    this.route = Citadel.map.mapConfigs().enemyRoute;
     this.speed = configs.speed;
-    // console.log(this.width);
     this.scale.setTo(configs.size.width / this.width, configs.size.height / this.height);
   }
 

@@ -5,6 +5,7 @@ Citadel.configs = {
   GAME_HEIGHT: 600,
   PLAY_SCREEN_WIDTH: 1080,
   PLAY_SCREEN_HEIGHT: 600,
+  TIME_TO_NEXT_WAVE: 1000,
   map: [
     {
       background: 'map/map1.png',
@@ -57,15 +58,32 @@ Citadel.configs = {
         {
           enemy: [
             {
-              type: "type1",
+              name: "type1",
+              number: 2
+            },
+            {
+              name: "type2",
               number: 1
             },
             {
-              type: "type2",
+              name: "type3",
               number: 1
             }
           ],
-          timeEnemyReborn: 10
+          timeEnemyReborn: 1000
+        },
+        {
+          enemy: [
+            {
+              name: "type2",
+              number: 1
+            },
+            {
+              name: "type5",
+              number: 1
+            }
+          ],
+          timeEnemyReborn: 1000
         }
       ]
     },
@@ -108,6 +126,50 @@ Citadel.configs = {
 		  {min: {x: 22, y: 14}, max: {x: 23, y: 16}},
 		  {min: {x: 20, y: 15}, max: {x: 21, y: 17}},
 		  {min: {x: 17, y: 11}, max: {x: 19, y: 11}}
+      ],
+      enemyRoute: [
+        {x: 0, y: 75},
+        {x: 255, y: 75},
+        {x: 255, y: 165},
+        {x: 435, y: 165},
+        {x: 435, y: 75},
+        {x: 615, y: 75},
+        {x: 615, y: 285},
+        {x: 435, y: 285},
+        {x: 435, y: 495},
+        {x: 615, y: 495},
+        {x: 615, y: 405},
+        {x: 795, y: 405},
+        {x: 795, y: 495},
+        {x: 1060, y: 495}
+      ],
+      wave: [
+        {
+          enemy: [
+            {
+              name: "type1",
+              number: 1
+            },
+            {
+              name: "type2",
+              number: 1
+            }
+          ],
+          timeEnemyReborn: 1000
+        },
+        {
+          enemy: [
+            {
+              name: "type2",
+              number: 1
+            },
+            {
+              name: "type5",
+              number: 1
+            }
+          ],
+          timeEnemyReborn: 1000
+        }
       ]
     },
 	{
@@ -145,6 +207,50 @@ Citadel.configs = {
 		  {min: {x: 31, y: 10}, max: {x: 33, y: 14}},
 		  {min: {x: 26, y: 19}, max: {x: 27, y: 19}},
 		  {min: {x: 25, y: 4}, max: {x: 27, y: 4}}
+      ],
+      enemyRoute: [
+        {x: 0, y: 75},
+        {x: 255, y: 75},
+        {x: 255, y: 165},
+        {x: 435, y: 165},
+        {x: 435, y: 75},
+        {x: 615, y: 75},
+        {x: 615, y: 285},
+        {x: 435, y: 285},
+        {x: 435, y: 495},
+        {x: 615, y: 495},
+        {x: 615, y: 405},
+        {x: 795, y: 405},
+        {x: 795, y: 495},
+        {x: 1060, y: 495}
+      ],
+      wave: [
+        {
+          enemy: [
+            {
+              name: "type1",
+              number: 1
+            },
+            {
+              name: "type2",
+              number: 1
+            }
+          ],
+          timeEnemyReborn: 1000
+        },
+        {
+          enemy: [
+            {
+              name: "type2",
+              number: 1
+            },
+            {
+              name: "type5",
+              number: 1
+            }
+          ],
+          timeEnemyReborn: 1000
+        }
       ]
     }
   ],
@@ -174,6 +280,7 @@ Citadel.configs = {
       name: "type1",
       frame: "enemy/type1/idle/001.png",
       "class": EnemyCake,
+      health: 200,
       speed: 100,
       size: {
         width: 50,
@@ -194,6 +301,7 @@ Citadel.configs = {
       name: "type2",
       frame: "enemy/type2/idle/001.png",
       "class": EnemyTiger1,
+      health: 200,
       speed: 100,
       size: {
         width: 50,
@@ -226,6 +334,7 @@ Citadel.configs = {
       name: "type3",
       frame: "enemy/type3/idle/001.png",
       "class": EnemyDragon1,
+      health: 200,
       speed: 100,
       size: {
         width: 50,
@@ -254,6 +363,7 @@ Citadel.configs = {
       name: "type4",
       frame: "enemy/type4/idle/001.png",
       "class": EnemyDragon2,
+      health: 200,
       speed: 100,
       size: {
         width: 50,
@@ -282,6 +392,7 @@ Citadel.configs = {
       name: "type5",
       frame: "enemy/type5/idle/001.png",
       "class": EnemyWarrior,
+      health: 200,
       speed: 100,
       size: {
         width: 50,
@@ -290,6 +401,672 @@ Citadel.configs = {
       animations: {
         idle: {
             frameCount: 4,
+            fps: 10
+        },
+        front: {
+            frameCount: 3,
+            fps: 10
+        },
+        back: {
+            frameCount: 3,
+            fps: 10
+        },
+        left: {
+            frameCount: 3,
+            fps: 10
+        }
+      }
+    },
+    {
+      name: "type6",
+      frame: "enemy/type6/idle/001.png",
+      "class": EnemyType6,
+      health: 200,
+      speed: 100,
+      size: {
+        width: 50,
+        height: 50
+      },
+      animations: {
+        idle: {
+            frameCount: 5,
+            fps: 10
+        },
+        dead: {
+            frameCount: 6,
+            fps: 10
+        },
+        front: {
+            frameCount: 3,
+            fps: 10
+        },
+        back: {
+            frameCount: 3,
+            fps: 10
+        },
+        left: {
+            frameCount: 3,
+            fps: 10
+        }
+      }
+    },
+    {
+      name: "type7",
+      frame: "enemy/type7/idle/001.png",
+      "class": EnemyType6,
+      health: 200,
+      speed: 100,
+      size: {
+        width: 50,
+        height: 50
+      },
+      animations: {
+        idle: {
+            frameCount: 5,
+            fps: 10
+        },
+        dead: {
+            frameCount: 6,
+            fps: 10
+        },
+        front: {
+            frameCount: 3,
+            fps: 10
+        },
+        back: {
+            frameCount: 3,
+            fps: 10
+        },
+        left: {
+            frameCount: 3,
+            fps: 10
+        }
+      }
+    },
+    {
+      name: "type8",
+      frame: "enemy/type8/idle/001.png",
+      "class": EnemyType6,
+      health: 200,
+      speed: 100,
+      size: {
+        width: 50,
+        height: 50
+      },
+      animations: {
+        idle: {
+            frameCount: 5,
+            fps: 10
+        },
+        dead: {
+            frameCount: 6,
+            fps: 10
+        },
+        front: {
+            frameCount: 3,
+            fps: 10
+        },
+        back: {
+            frameCount: 3,
+            fps: 10
+        },
+        left: {
+            frameCount: 3,
+            fps: 10
+        }
+      }
+    },
+    {
+      name: "type9",
+      frame: "enemy/type9/idle/001.png",
+      "class": EnemyType6,
+      health: 200,
+      speed: 100,
+      size: {
+        width: 50,
+        height: 50
+      },
+      animations: {
+        idle: {
+            frameCount: 5,
+            fps: 10
+        },
+        dead: {
+            frameCount: 6,
+            fps: 10
+        },
+        front: {
+            frameCount: 3,
+            fps: 10
+        },
+        back: {
+            frameCount: 3,
+            fps: 10
+        },
+        left: {
+            frameCount: 3,
+            fps: 10
+        }
+      }
+    },
+    {
+      name: "type10",
+      frame: "enemy/type10/idle/001.png",
+      "class": EnemyType6,
+      health: 200,
+      speed: 100,
+      size: {
+        width: 50,
+        height: 50
+      },
+      animations: {
+        idle: {
+            frameCount: 5,
+            fps: 10
+        },
+        dead: {
+            frameCount: 6,
+            fps: 10
+        },
+        front: {
+            frameCount: 3,
+            fps: 10
+        },
+        back: {
+            frameCount: 3,
+            fps: 10
+        },
+        left: {
+            frameCount: 3,
+            fps: 10
+        }
+      }
+    },
+    {
+      name: "type11",
+      frame: "enemy/type11/idle/001.png",
+      "class": EnemyType6,
+      health: 200,
+      speed: 100,
+      fly: true,
+      size: {
+        width: 50,
+        height: 50
+      },
+      animations: {
+        idle: {
+            frameCount: 5,
+            fps: 10
+        },
+        dead: {
+            frameCount: 6,
+            fps: 10
+        },
+        front: {
+            frameCount: 3,
+            fps: 10
+        },
+        back: {
+            frameCount: 3,
+            fps: 10
+        },
+        left: {
+            frameCount: 3,
+            fps: 10
+        }
+      }
+    },
+    {
+      name: "type12",
+      frame: "enemy/type12/idle/001.png",
+      "class": EnemyType6,
+      health: 200,
+      speed: 100,
+      size: {
+        width: 50,
+        height: 50
+      },
+      animations: {
+        idle: {
+            frameCount: 5,
+            fps: 10
+        },
+        dead: {
+            frameCount: 6,
+            fps: 10
+        },
+        front: {
+            frameCount: 3,
+            fps: 10
+        },
+        back: {
+            frameCount: 3,
+            fps: 10
+        },
+        left: {
+            frameCount: 3,
+            fps: 10
+        }
+      }
+    },
+    {
+      name: "type13",
+      frame: "enemy/type13/idle/001.png",
+      "class": EnemyType6,
+      health: 200,
+      speed: 100,
+      fly: true,
+      size: {
+        width: 50,
+        height: 50
+      },
+      animations: {
+        idle: {
+            frameCount: 5,
+            fps: 10
+        },
+        dead: {
+            frameCount: 6,
+            fps: 10
+        },
+        front: {
+            frameCount: 3,
+            fps: 10
+        },
+        back: {
+            frameCount: 3,
+            fps: 10
+        },
+        left: {
+            frameCount: 3,
+            fps: 10
+        }
+      }
+    },
+    {
+      name: "type14",
+      frame: "enemy/type14/idle/001.png",
+      "class": EnemyType6,
+      health: 200,
+      speed: 100,
+      fly: true,
+      size: {
+        width: 50,
+        height: 50
+      },
+      animations: {
+        idle: {
+            frameCount: 5,
+            fps: 10
+        },
+        dead: {
+            frameCount: 6,
+            fps: 10
+        },
+        front: {
+            frameCount: 3,
+            fps: 10
+        },
+        back: {
+            frameCount: 3,
+            fps: 10
+        },
+        left: {
+            frameCount: 3,
+            fps: 10
+        }
+      }
+    },
+    {
+      name: "type15",
+      frame: "enemy/type15/idle/001.png",
+      "class": EnemyType6,
+      health: 200,
+      speed: 100,
+      size: {
+        width: 50,
+        height: 50
+      },
+      animations: {
+        idle: {
+            frameCount: 5,
+            fps: 10
+        },
+        dead: {
+            frameCount: 6,
+            fps: 10
+        },
+        front: {
+            frameCount: 3,
+            fps: 10
+        },
+        back: {
+            frameCount: 3,
+            fps: 10
+        },
+        left: {
+            frameCount: 3,
+            fps: 10
+        }
+      }
+    },
+    {
+      name: "type16",
+      frame: "enemy/type16/idle/001.png",
+      "class": EnemyType6,
+      health: 200,
+      speed: 100,
+      size: {
+        width: 50,
+        height: 50
+      },
+      animations: {
+        idle: {
+            frameCount: 5,
+            fps: 10
+        },
+        dead: {
+            frameCount: 6,
+            fps: 10
+        },
+        front: {
+            frameCount: 3,
+            fps: 10
+        },
+        back: {
+            frameCount: 3,
+            fps: 10
+        },
+        left: {
+            frameCount: 3,
+            fps: 10
+        }
+      }
+    },
+    {
+      name: "type17",
+      frame: "enemy/type17/idle/001.png",
+      "class": EnemyType6,
+      health: 200,
+      speed: 100,
+      fly: true,
+      size: {
+        width: 50,
+        height: 50
+      },
+      animations: {
+        idle: {
+            frameCount: 5,
+            fps: 10
+        },
+        dead: {
+            frameCount: 6,
+            fps: 10
+        },
+        front: {
+            frameCount: 3,
+            fps: 10
+        },
+        back: {
+            frameCount: 3,
+            fps: 10
+        },
+        left: {
+            frameCount: 3,
+            fps: 10
+        }
+      }
+    },
+    {
+      name: "type18",
+      frame: "enemy/type18/idle/001.png",
+      "class": EnemyType6,
+      health: 200,
+      speed: 100,
+      size: {
+        width: 50,
+        height: 50
+      },
+      animations: {
+        idle: {
+            frameCount: 5,
+            fps: 10
+        },
+        dead: {
+            frameCount: 6,
+            fps: 10
+        },
+        front: {
+            frameCount: 3,
+            fps: 10
+        },
+        back: {
+            frameCount: 3,
+            fps: 10
+        },
+        left: {
+            frameCount: 3,
+            fps: 10
+        }
+      }
+    },
+    {
+      name: "type19",
+      frame: "enemy/type19/idle/001.png",
+      "class": EnemyType6,
+      health: 200,
+      speed: 100,
+      size: {
+        width: 50,
+        height: 50
+      },
+      animations: {
+        idle: {
+            frameCount: 5,
+            fps: 10
+        },
+        dead: {
+            frameCount: 6,
+            fps: 10
+        },
+        front: {
+            frameCount: 3,
+            fps: 10
+        },
+        back: {
+            frameCount: 3,
+            fps: 10
+        },
+        left: {
+            frameCount: 3,
+            fps: 10
+        }
+      }
+    },
+    {
+      name: "type20",
+      frame: "enemy/type20/idle/001.png",
+      "class": EnemyType6,
+      health: 200,
+      speed: 100,
+      size: {
+        width: 50,
+        height: 50
+      },
+      animations: {
+        idle: {
+            frameCount: 5,
+            fps: 10
+        },
+        dead: {
+            frameCount: 6,
+            fps: 10
+        },
+        front: {
+            frameCount: 3,
+            fps: 10
+        },
+        back: {
+            frameCount: 3,
+            fps: 10
+        },
+        left: {
+            frameCount: 3,
+            fps: 10
+        }
+      }
+    },
+    {
+      name: "type21",
+      frame: "enemy/type21/idle/001.png",
+      "class": EnemyType6,
+      health: 200,
+      speed: 100,
+      size: {
+        width: 50,
+        height: 50
+      },
+      animations: {
+        idle: {
+            frameCount: 5,
+            fps: 10
+        },
+        dead: {
+            frameCount: 6,
+            fps: 10
+        },
+        front: {
+            frameCount: 3,
+            fps: 10
+        },
+        back: {
+            frameCount: 3,
+            fps: 10
+        },
+        left: {
+            frameCount: 3,
+            fps: 10
+        }
+      }
+    },
+    {
+      name: "type22",
+      frame: "enemy/type22/idle/001.png",
+      "class": EnemyType6,
+      health: 200,
+      speed: 100,
+      fly: true,
+      size: {
+        width: 50,
+        height: 50
+      },
+      animations: {
+        idle: {
+            frameCount: 5,
+            fps: 10
+        },
+        dead: {
+            frameCount: 6,
+            fps: 10
+        },
+        front: {
+            frameCount: 3,
+            fps: 10
+        },
+        back: {
+            frameCount: 3,
+            fps: 10
+        },
+        left: {
+            frameCount: 3,
+            fps: 10
+        }
+      }
+    },
+    {
+      name: "type23",
+      frame: "enemy/type23/idle/001.png",
+      "class": EnemyType6,
+      health: 200,
+      speed: 100,
+      fly: true,
+      size: {
+        width: 50,
+        height: 50
+      },
+      animations: {
+        idle: {
+            frameCount: 5,
+            fps: 10
+        },
+        dead: {
+            frameCount: 6,
+            fps: 10
+        },
+        front: {
+            frameCount: 3,
+            fps: 10
+        },
+        back: {
+            frameCount: 3,
+            fps: 10
+        },
+        left: {
+            frameCount: 3,
+            fps: 10
+        }
+      }
+    },
+    {
+      name: "type24",
+      frame: "enemy/type24/idle/001.png",
+      "class": EnemyType6,
+      health: 200,
+      speed: 100,
+      size: {
+        width: 50,
+        height: 50
+      },
+      animations: {
+        idle: {
+            frameCount: 5,
+            fps: 10
+        },
+        dead: {
+            frameCount: 6,
+            fps: 10
+        },
+        front: {
+            frameCount: 3,
+            fps: 10
+        },
+        back: {
+            frameCount: 3,
+            fps: 10
+        },
+        left: {
+            frameCount: 3,
+            fps: 10
+        }
+      }
+    },
+    {
+      name: "type25",
+      frame: "enemy/type25/idle/001.png",
+      "class": EnemyType6,
+      health: 200,
+      speed: 100,
+      size: {
+        width: 50,
+        height: 50
+      },
+      animations: {
+        idle: {
+            frameCount: 5,
+            fps: 10
+        },
+        dead: {
+            frameCount: 6,
             fps: 10
         },
         front: {
@@ -348,14 +1125,13 @@ var preload = function() {
 }
 
 var create = function() {
-  Citadel.map = new MapBuilder(1, Citadel.configs);
+  Citadel.map = new MapBuilder(-1, Citadel.configs);
 
-  Citadel.map.level = 0;
-  Citadel.map.nextLevel();
+  document.dispatchEvent(Citadel.map.event["nextLevel"]);
 }
 
 var update = function() {
-
+  Citadel.map.update();
 }
 
 var render = function() {
