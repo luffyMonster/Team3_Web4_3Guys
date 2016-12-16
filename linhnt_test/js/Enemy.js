@@ -2,6 +2,7 @@ class Enemy extends Phaser.Sprite {
   constructor(game, x, y, key, frame, configs) {
     super(game, x, y, key, frame);
     game.add.existing(this);
+    game.physics.enable(this, Phaser.Physics.ARCADE);
     this.name = configs.name;
     this.init(configs);
   }

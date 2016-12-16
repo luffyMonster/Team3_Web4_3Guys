@@ -30,15 +30,18 @@ class TowerType1 extends Tower{
     Citadel.enemyGroup.forEachAlive(minDisF);
     return target;
   }
-
   fire(){
     if (this.timeSinceLastFire < this.cooldown ) return;
     var direct = new Phaser.Point(this.target.x - this.position.x, this.target.y - this.position.y);
     var bullet = Citadel.bulletController.get(0);
-    bullet.target = this.target;
+    bullet.setTarget(this.target);
     bullet.reset(direct, this.position.x, this.position.y);
     this.angle = bullet.angle + 90;
     this.timeSinceLastFire = 0;
+    setTimeout(function(){
+      Citadel.bulletController.kill(bullet);
+    }, 2000);
     console.log(Citadel.bulletGroup.children.length);
   }
+
 }

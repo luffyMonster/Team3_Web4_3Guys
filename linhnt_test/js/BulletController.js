@@ -11,11 +11,18 @@ class BulletController{
   get(index) {
     var configs = Citadel.configs.bullet[index];
     if(this.deads[configs.name].length > 0) {
-      return this.deads[configs.name].shift();
-    } else {
-      var bullet = new Citadel.configs.bullet[index].class(Citadel.game, 100, 100, 'bullet', null, configs);
-      Citadel.bulletGroup.add(bullet);
+      var bullet = this.deads[configs.name].shift();
+      bullet.reborn();
       return bullet;
+    } else {
+      Citadel.bulletGroup.add(new Citadel.configs.bullet[index].class(Citadel.game, 0, 0, 'bullet', null, configs));
+      return Citadel.bulletGroup.children.slice(-1)[0];
     }
+  }
+  kill(bullet) {
+    bullet.kill();
+    // console.log(this.deads[enemy.name].length + " | " + Citadel.enemyGroup.children.length);
+    this.deads[bullet.name].push(bullet);
+    // Citadel.enemyController.get(0);
   }
 }
