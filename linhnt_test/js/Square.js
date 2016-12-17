@@ -23,7 +23,7 @@ class Square extends Phaser.Graphics {
     this.endFill();
 
     this.alpha = this.alphaDefault;
-    this.isFree = checkMapFree(this.i, this.j);
+
   }
 
   update() {
@@ -41,15 +41,4 @@ class Square extends Phaser.Graphics {
   nextDown() {
     return this.j < Citadel.J - 1 ? Citadel.squareGroup.children[(this.j + 1) * Citadel.I + this.i] : null;
   }
-}
-
-function checkMapFree(x, y) {
-  var occupieds = Citadel.configs.map[0].occupied;
-  for(var i = 0; i < occupieds.length; i++) {
-    var occupied = occupieds[i];
-    if(occupied.min.x <= x && x <= occupied.max.x && occupied.min.y <= y && y <= occupied.max.y) {
-      return false;
-    }
-  }
-  return true;
 }
