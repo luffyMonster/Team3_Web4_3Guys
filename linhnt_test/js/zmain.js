@@ -108,7 +108,7 @@ Citadel.configs = {
           enemy: [
             {
               name: "type1",
-              number: 10
+              number: 8
             },
             {
               name: "type2",

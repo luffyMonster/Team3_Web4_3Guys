@@ -5,7 +5,6 @@ class TowerType2 extends Tower{
     this.radiusSprite = null;//TODO
     this.emitter = null;
     this.lastTime = 0;
-    this.init1();
   }
   init1(){
       var LIFECYCLE = 2000;
