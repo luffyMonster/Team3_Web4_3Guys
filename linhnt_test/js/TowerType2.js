@@ -3,13 +3,14 @@ class TowerType2 extends Tower{
     super(game, x, y, key, frame, configs);
     this.target = null;
     this.radiusSprite = null;//TODO
-     this.emitter = Citadel.game.add.emitter(0,0);
+    this.emitter = null;
     this.lastTime = 0;
     this.init1();
   }
   init1(){
       var LIFECYCLE = 2000;
-
+      this.emitter = Citadel.game.add.emitter(0,0);
+      this.emitter.width = this.radius;
        // Particle behaviour ranges to create a smoke drift-like effect
        this.emitter.minParticleScale = 0.1;
        this.emitter.maxParticleScale = 0.9;
@@ -59,8 +60,6 @@ class TowerType2 extends Tower{
       this.upgradeSlow += this.configs.upgradeSlow;
       this.emitter.width = this.radius;
     }
-
-
   }
   resett(configs){
     this.frameName = configs.frame;
@@ -76,6 +75,7 @@ class TowerType2 extends Tower{
     this.slow = configs.slow;
     this.upgradeSlow = 0;
     this.upgradePrice = configs.upgradePrice;
+    this.init1();
     //
     // var style = { font: "15px Arial", fill: "#00ffff", wordWrap: true, wordWrapWidth: Citadel.configs.PLAY_SCREEN_WIDTH, align: "center"};
     // this.textLevel = Citadel.game.add.text(this.x, this.y + 30, '/', style);

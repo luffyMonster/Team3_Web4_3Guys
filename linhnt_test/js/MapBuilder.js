@@ -30,12 +30,12 @@ class MapBuilder {
       Citadel.introduce = Citadel.game.add.sprite(0, 0, 'introduce');
       Citadel.introduce.alpha = 0;
       Citadel.introduce.scale.setTo(Citadel.configs.GAME_WIDTH/Citadel.introduce.width, Citadel.configs.GAME_HEIGHT/Citadel.introduce.height) ;
-      var style = { font: "20px Arial", fill: "#ff0044", wordWrap: true, wordWrapWidth: Citadel.configs.PLAY_SCREEN_WIDTH, align: "center"};
+      var style = { font: "20px Arial", fill: "#ffff00", wordWrap: true, wordWrapWidth: Citadel.configs.PLAY_SCREEN_WIDTH, align: "center"};
       Citadel.textHeath = Citadel.game.add.text(Citadel.configs.PLAY_SCREEN_WIDTH, Citadel.configs.PLAY_SCREEN_HEIGHT-250, "Health\r\n" + Citadel.health, style);
       Citadel.textMoney = Citadel.game.add.text(Citadel.configs.PLAY_SCREEN_WIDTH, Citadel.configs.PLAY_SCREEN_HEIGHT-120, "Money\r\n" + Citadel.monneyAmount, style);
       Citadel.textUpgrade = Citadel.game.add.text(0, 0, "Upgrade", style);
       Citadel.textUpgrade.alpha = 0;
-      
+
       Citadel.dragSprite = new DragSprite(Citadel.game, 0, 0, 'assets', 'tower/type1/idle/001.png');
 
       this.addGraphicMatrix();
