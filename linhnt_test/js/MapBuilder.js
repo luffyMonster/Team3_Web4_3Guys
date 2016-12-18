@@ -35,7 +35,7 @@ class MapBuilder {
       Citadel.textMoney = Citadel.game.add.text(Citadel.configs.PLAY_SCREEN_WIDTH, Citadel.configs.PLAY_SCREEN_HEIGHT-120, "Money\r\n" + Citadel.monneyAmount, style);
       Citadel.textUpgrade = Citadel.game.add.text(0, 0, "Upgrade", style);
       Citadel.textUpgrade.alpha = 0;
-
+      
       Citadel.dragSprite = new DragSprite(Citadel.game, 0, 0, 'assets', 'tower/type1/idle/001.png');
 
       this.addGraphicMatrix();

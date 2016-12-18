@@ -18,7 +18,6 @@ class TowerController{
           }
         }
       }
-      console.log(index);
     var configs = Citadel.configs.tower[index];
     var tower = null;
     if(this.deads[configs.name].length > 0) {
@@ -34,6 +33,9 @@ class TowerController{
   kill(tower) {
     tower.kill();
     //tower.textLevel.alpha = 0;
+    if (tower.emitter){
+      tower.emitter.kill();
+    }
     this.deads[tower.name].push(tower);
     // Citadel.enemyController.get(0);
   }

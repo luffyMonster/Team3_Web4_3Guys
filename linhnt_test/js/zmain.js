@@ -1300,6 +1300,7 @@ var preload = function() {
     Citadel.game.load.image('resumeButton', 'Assets/Resume.jpg');
     Citadel.game.load.image('introduce', 'Assets/huongdan.png');
     Citadel.game.load.image('menubg', 'Assets/MenuBg.jpg');
+    Citadel.game.load.image('cloud', 'Assets/cloud.jpg');
     Citadel.game.load.spritesheet('explosion', 'Assets/explode.png', 128, 128);
     Citadel.game.load.audio('soundFired', ['Assets/sound/11.wav']);
     Citadel.game.load.audio('soundExplode', ['Assets/sound/22.wav']);
