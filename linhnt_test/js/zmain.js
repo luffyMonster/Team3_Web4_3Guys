@@ -11,7 +11,7 @@ Citadel.configs = {
   map: [
     {
       background: 'map/map1.png',
-      money: 100,
+      money: 20,
       occupied: [
         {min: {x: 0, y: 0}, max: {x: 7, y: 3}},
         {min: {x: 0, y: 4}, max: {x: 2, y: 8}},
@@ -375,7 +375,7 @@ Citadel.configs = {
     },
 	{
       background: 'map/map5.png',
-      money: 80,
+      money: 60,
       occupied: [
         {min: {x: 0, y: 0}, max: {x: 3, y: 1}},
           {min: {x: 0, y: 2}, max: {x: 1, y: 2}},
