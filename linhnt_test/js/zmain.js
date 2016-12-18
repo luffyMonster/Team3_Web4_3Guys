@@ -61,17 +61,8 @@ Citadel.configs = {
       wave: [
         {
           enemy: [
-            {
-              name: "type22",
-              number: 2
-            }
-            ,
-            {
-              name: "type2",
-              number: 4
-            }
-            // {name: "type1", number: 1},
-            // {name: "type2", number: 1},
+            {name: "type1", number: 5},
+            {name: "type2", number: 1}
             // {name: "type3", number: 1},
             // {name: "type4", number: 1},
             // {name: "type5", number: 1},
@@ -95,27 +86,103 @@ Citadel.configs = {
             // {name: "type23", number: 1},
             // {name: "type24", number: 1},
             // {name: "type25", number: 1}
-            // {
-            //   name: "type3",
-            //   number: 1
-            // }
           ],
           timeEnemyReborn: 1000
         }
-        // ,
-        // {
-        //   enemy: [
-        //     {
-        //       name: "type2",
-        //       number: 10
-        //     },
-        //     {
-        //       name: "type5",
-        //       number: 10
-        //     }
-        //   ],
-        //   timeEnemyReborn: 1000
-        // }
+        ,
+        {
+          enemy: [
+            {
+              name: "type1",
+              number: 10
+            },
+            {
+              name: "type2",
+              number: 5
+            }
+          ],
+          timeEnemyReborn: 1000
+        }
+        ,
+        {
+          enemy: [
+            {
+              name: "type1",
+              number: 10
+            },
+            {
+              name: "type2",
+              number: 5
+            },
+            {
+              name: "type3",
+              number: 2
+            }
+          ],
+          timeEnemyReborn: 1000
+        },
+        {
+          enemy: [
+            {
+              name: "type2",
+              number: 1
+            },
+            {
+              name: "type3",
+              number: 1
+            },
+            {
+              name: "type2",
+              number: 1
+            },
+            {
+              name: "type3",
+              number: 1
+            },
+            {
+              name: "type2",
+              number: 1
+            },
+            {
+              name: "type3",
+              number: 1
+            },
+            {
+              name: "type2",
+              number: 2
+            },
+            {
+              name: "type3",
+              number: 2
+            },
+            {
+              name: "type2",
+              number: 2
+            },
+            {
+              name: "type3",
+              number: 5
+            }
+          ],
+          timeEnemyReborn: 500
+        },
+        {
+          enemy: [
+            {
+              name: "type16",
+              number: 1
+            }
+          ],
+          timeEnemyReborn: 2000
+        },{
+          enemy: [
+            {
+              name: "type16",
+              number: 1
+            }
+          ],
+          timeEnemyReborn: 1000
+        }
       ]
     },
     {
@@ -178,11 +245,35 @@ Citadel.configs = {
         {
           enemy: [
             {
-              name: "type1",
+              name: "type3",
+              number: 5
+            },
+            {
+              name: "type22",
               number: 1
             },
             {
-              name: "type2",
+              name: "type3",
+              number: 1
+            },
+            {
+              name: "type22",
+              number: 1
+            },
+            {
+              name: "type3",
+              number: 1
+            },
+            {
+              name: "type22",
+              number: 1
+            },
+            {
+              name: "type3",
+              number: 1
+            },
+            {
+              name: "type22",
               number: 1
             }
           ],
@@ -191,12 +282,91 @@ Citadel.configs = {
         {
           enemy: [
             {
-              name: "type2",
-              number: 1
+              name: "type3",
+              number: 10
+            },
+            {
+              name: "type4",
+              number: 5
+            },
+            {
+              name: "type17",
+              number: 2
+            }
+          ],
+          timeEnemyReborn: 1000
+        }
+        ,
+        {
+          enemy: [
+            {
+              name: "type5",
+              number: 10
+            },
+            {
+              name: "type7",
+              number: 5
             },
             {
               name: "type5",
-              number: 0
+              number: 10
+            }
+          ],
+          timeEnemyReborn: 1000
+        },
+        {
+          enemy: [
+            {
+              name: "type8",
+              number: 10
+            },
+            {
+              name: "type9",
+              number: 5
+            },
+            {
+              name: "type7",
+              number: 10
+            },
+            {
+              name: "type10",
+              number: 1
+            },
+            {
+              name: "type17",
+              number: 1
+            },
+            {
+              name: "type10",
+              number: 1
+            },
+            {
+              name: "type17",
+              number: 1
+            },
+            {
+              name: "type10",
+              number: 1
+            },
+            {
+              name: "type17",
+              number: 1
+            },
+            {
+              name: "type10",
+              number: 1
+            },
+            {
+              name: "type17",
+              number: 1
+            },
+            {
+              name: "type10",
+              number: 1
+            },
+            {
+              name: "type17",
+              number: 1
             }
           ],
           timeEnemyReborn: 1000
