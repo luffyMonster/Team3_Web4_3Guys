@@ -60,15 +60,16 @@ Citadel.configs = {
             {
               name: "type1",
               number: 2
-            },
-            {
-              name: "type2",
-              number: 1
-            },
-            {
-              name: "type3",
-              number: 1
             }
+            // },
+            // {
+            //   name: "type2",
+            //   number: 1
+            // },
+            // {
+            //   name: "type3",
+            //   number: 1
+            // }
           ],
           timeEnemyReborn: 1000
         },
@@ -423,6 +424,7 @@ Citadel.configs = {
       "class": EnemyType6,
       health: 200,
       speed: 100,
+      invisible: true,
       size: {
         width: 50,
         height: 50
@@ -555,6 +557,7 @@ Citadel.configs = {
       "class": EnemyType6,
       health: 200,
       speed: 100,
+      invible: true,
       size: {
         width: 50,
         height: 50

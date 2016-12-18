@@ -11,6 +11,8 @@ class Enemy extends Phaser.Sprite {
     this.anchor.setTo(0.5);
     this.route = Citadel.map.mapConfigs().enemyRoute;
     this.speed = configs.speed;
+    this.fly = configs.fly;
+    this.invi = configs.invi;
     this.scale.setTo(configs.size.width / this.width, configs.size.height / this.height);
   }
 

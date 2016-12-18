@@ -40,15 +40,11 @@ class EnemyController {
       }
     }
     var configs = Citadel.configs.enemy[index];
-    if(this.deads[configs.name].length > 0) {
-      return this.resetEnemy(this.deads[configs.name].shift(), -100, -100, configs);
-    } else {
-      Citadel.enemyGroup.add(new Citadel.configs.enemy[index].class(Citadel.game, -100, -100, 'assets', configs));
-      return Citadel.enemyGroup.children.slice(-1)[0];
-    }
+
   }
 
   resetEnemy(enemy, x, y, configs) {
+    enemy.invi = undefined;
     enemy.speed = configs.speed;
     enemy.from = enemy.to = undefined;
     enemy.nextDestination();
